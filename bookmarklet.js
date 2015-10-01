@@ -1,0 +1,1 @@
+javascript: (function() {    var s = document.createElement("script");    s.type = "text/javascript";    s.src = "//raw.githubusercontent.com/lfx/hhhover/master/hhhover.js";    document.body.appendChild(s);})();
