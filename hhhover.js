@@ -9,6 +9,9 @@ function loadJQ() {
 
 function addStyle() {
     var css = '.hhhover { outline: 1px dashed red !important; }',
+        css = css + '#hhoverOuter { position:fixed; width:100%; height:50px; opacity:0.7; z-index:100; background:#000; text-align:center; padding:10px; color:#fff }',
+        css = css + '#hhoverOuter.bottom { bottom:0; }', 
+        css = css + '#hhoverOuter.top { top:0; }', 
         head = document.head || document.getElementsByTagName('head')[0],
         style = document.createElement('style');
 
@@ -25,9 +28,14 @@ function addStyle() {
 function addHtml() {
     var elemDiv = document.createElement('div');
     elemDiv.id = "hhoverOuter";
-    elemDiv.style.cssText = 'position:fixed;bottom:0;width:100%;height:50px;opacity:0.7;z-index:100;background:#000;text-align:center;padding:10px;color:#fff';
+    elemDiv.className = 'bottom';
     elemDiv.innerText = "hhover";
     document.body.appendChild(elemDiv);
+    var updown = document.createElement('div');
+    updown.id= "updown";
+    updown.innerText = "Up!";
+    elemDiv.appendChild(updown);
+
 }
 
 function addHover() {
