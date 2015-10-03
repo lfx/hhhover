@@ -8,10 +8,14 @@ function loadJQ() {
 }
 
 function addStyle() {
-    var css = '.hhhover { outline: 1px dashed red !important; }',
-        css = css + '#hhoverOuter { position:fixed; width:100%; height:50px; opacity:0.7; z-index:100; background:#000; text-align:center; padding:10px; color:#fff }',
-        css = css + '#hhoverOuter.bottom { bottom:0; }', 
-        css = css + '#hhoverOuter.top { top:0; }', 
+    var css = '.hhhover { outline: 1px dashed red !important; } ',
+        css = css + '#hhhoverBox { position:fixed; width:100%; height:50px; opacity:0.7; z-index:100; background:#000; text-align:center; padding:10px; color:#fff }',
+        css = css + '#hhhoverBox.bottom { bottom:0; }',
+        css = css + '#hhhoverBox.top { top:0; cursor:s-resize; } ',
+        css = css + '#hhhoverBox.top #updown { cursor:s-resize; } ',
+        css = css + '#hhhoverBox.bottom { bottom:0; cursor:n-resize; } ',
+        css = css + '#hhhoverBox.bottom #updown { cursor:n-resize; } ',
+        css = css + '#hhhoverBox #updown { position:absolute; right:5px; bottom:2px; width: 25px; text-align: right; cursor:pointer; } ',
         head = document.head || document.getElementsByTagName('head')[0],
         style = document.createElement('style');
 
@@ -26,16 +30,32 @@ function addStyle() {
 }
 
 function addHtml() {
-    var elemDiv = document.createElement('div');
-    elemDiv.id = "hhoverOuter";
-    elemDiv.className = 'bottom';
-    elemDiv.innerText = "hhover";
-    document.body.appendChild(elemDiv);
-    var updown = document.createElement('div');
-    updown.id= "updown";
-    updown.innerText = "Up!";
-    elemDiv.appendChild(updown);
+    var box = document.createElement('div');
+    box.id = "hhhoverBox";
+    box.className = "bottom";
 
+    var view = document.createElement('div');
+    view.id = "view";
+    view.innerText = "hhhover";
+    box.appendChild(view);
+
+    var updown = document.createElement('div');
+    updown.id = "updown";
+    updown.innerText = "(mv)";
+    box.appendChild(updown);
+
+    document.body.appendChild(box);
+}
+
+function addActions() {
+    var $box = jQuery("#hhhoverBox");
+    jQuery("#updown", $box).on('click', function() {
+        if ($box.attr('class').search('bottom') != -1) {
+            $box.attr('class', 'top');
+        } else {
+            $box.attr('class', 'bottom');
+        }
+    });
 }
 
 function addHover() {
@@ -50,7 +70,7 @@ function addHover() {
 function updateBox(elem) {
     var ff = dumpComputedStyles(elem, 'font-family');
     var size = dumpComputedStyles(elem, 'font-size');
-    jQuery('#hhoverOuter').text(ff + ", " + size);
+    jQuery('#hhhoverBox #view').text(ff + ", " + size);
 }
 
 function dumpComputedStyles(elem, prop) {
@@ -58,16 +78,17 @@ function dumpComputedStyles(elem, prop) {
     if (prop) {
         return prop + " : " + cs.getPropertyValue(prop);
     }
-    var len = cs.length;
-    for (var i = 0; i < len; i++) {
-        var style = cs[i];
-        // dump("    "+style+" : "+cs.getPropertyValue(style)+"\n");
-    }
+    // var len = cs.length;
+    // for (var i = 0; i < len; i++) {
+    //     var style = cs[i];
+    //     // dump("    "+style+" : "+cs.getPropertyValue(style)+"\n");
+    // }
 }
 
 setTimeout(function() {
     loadJQ();
     addStyle();
     addHtml();
+    addActions();
     addHover();
 }, 1000);
