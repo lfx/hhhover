@@ -15,7 +15,7 @@ function addStyle() {
         css = css + '#hhhoverBox.top #updown { cursor:s-resize; } ',
         css = css + '#hhhoverBox.bottom { bottom:0; cursor:n-resize; } ',
         css = css + '#hhhoverBox.bottom #updown { cursor:n-resize; } ',
-        css = css + '#hhhoverBox #updown { position:absolute; right:5px; bottom:2px; width: 25px; text-align: right; cursor:pointer; } ',
+        css = css + '#hhhoverBox #updown { position:absolute; right:40px; bottom:2px; width: 25px; text-align: right; cursor:pointer; } ',
         head = document.head || document.getElementsByTagName('head')[0],
         style = document.createElement('style');
 
