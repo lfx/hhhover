@@ -9,7 +9,7 @@ function loadJQ() {
 
 function addStyle() {
     var css = '.hhhover { outline: 1px dashed red !important; } ',
-        css = css + '#hhhoverBox { position:fixed; width:100%; height:50px; opacity:0.7; z-index:100; background:#000; text-align:center; padding:10px; color:#fff }',
+        css = css + '#hhhoverBox { position:fixed; width:100%; height:50px; opacity:0.7; z-index:99999; background:#000; text-align:center; padding:10px; color:#fff }',
         css = css + '#hhhoverBox.bottom { bottom:0; }',
         css = css + '#hhhoverBox.top { top:0; cursor:s-resize; } ',
         css = css + '#hhhoverBox.top #updown { cursor:s-resize; } ',
