@@ -5,3 +5,4 @@ Useful for design details checks.
 
 Inspiration from [pesticide.io](http://pesticide.io) 
 
+Contributions welcome. 
